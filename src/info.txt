@@ -1,0 +1,216 @@
+how to insert star
+ctrl + i
+
+npm install react-router-dom@6
+
+changed to version 5
+
+npm i react-currency-format
+https://stackoverflow.com/questions/66291961/react-currency-format-is-not-installing-how-to-fix-it
+npm install react-currency-format --save --force
+
+//reducer javascript
+
+var array = [36, 25, 6, 15];
+
+array.reduce(function(accumulator, currentValue) {
+  return accumulator + currentValue;
+}, 0);
+
+ // 36 + 25 + 6 + 15 = 82
+
+ usestate====for changing email and adress for different people
+
+
+ We use e.preventDefault() to prevent the page from reloading because of the form tag.
+
+ When the login button is pressed, the value of the states of textboxes are passed to Firebase to authenticate. Firebase does its magic, and if the authentication is successful returns a promise or throws an error.
+Something similar happens with register. If there is another user with same details, Firebase got you covered.
+The useHistory() is a hook from react-router-dom which helps you to redirect user from the actual code.
+
+
+then after adding function for signin and register we go to Firebase
+
+
+npm i Firebase
+
+
+when we start back end
+//we start by firebase init
+
+npm i firebase-tools
+choose
+config firebase
+saying yes
+and no to github
+and then choosing for not public but write build
+
+npm run build
+ 2nd step
+ firebase deploy
+
+
+ when we are using to payment we must use navigate
+
+ useHistory() is replaced with useNavigate(),, redirect it 
+
+
+react flip move
+
+after we created payment componenet
+npm install @stripe/stripe-js
+shortcut all to do
+npm install @stripe/react-stripe-js @stripe/stripe-js
+
+import them in app.js
+ and then go to stripe.com
+
+API KEY
+ pk_test_51MJIElF75J6GVl0WPXTSpiEqGRkbhgLQxYPLlM0htHGqjzglTZMdHmfmNhJa0xm7hMVXPaEdcTVmpLnBFzHRNpk500oOsyvsZ0
+
+
+ npm axios install library
+
+
+ 
+
+
+
+ and then firebase init
+
+ then choose functions : configure and deploy cloud functions
+
+ we choose javascript language
+ then we say yes to bug and enforce
+ then do u want to install dependecies and then say yes
+
+ there after that fucnction is done
+
+
+ the afer you went to the function which is the back end amazon
+ then go to index.js
+
+then install saying npm i express
+
+and then npm cors
+
+and then npm i stripe
+
+
+then we are gonna emulate it not 
+
+firebase emulators:start
+
+spin up the server, few windows to pop up
+
+stripe gave us the a card number of 42424242
+
+
+
+Git init
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/gttemesgen/netflex-clone.git
+git push -u origin main
+
+
+
+
+
+then go to install npm i moment
+//for time to acesse
+
+
+now backend for delpoyment we should install but first we have to stop the emulators 
+#firebase deploy --only functions
+n
+
+ "npm --prefix \"$RESOURCE_DIR\" run lint"
+
+
+---updating anything new
+ npm run build
+ firebase deploy
+
+
+
+ 
+
+
+
+
+  "functions": {
+    "predeploy": [],
+    "source": "function"
+  }
+
+
+  "source": "functions",
+      // "codebase": "default",
+
+
+
+
+      const functions = require("firebase-functions");
+
+
+const express = require("express");
+const cors = require("cors");
+const stripe = require("stripe")(
+  "sk_test_51MJIElF75J6GVl0WeaPhHCk5hVcCayY30nS8NTPM3MLny08aGMCVRWBWcylHltcEOmsflRxbmeLHvN4AYWehMiB900bIHTRcK0"
+);
+//app config
+const app = express();
+
+//middleware
+app.use(cors({ origin: true }));
+app.use(express.json());
+
+app.get("/", (request, response) => response.status(200).send("hello world"));
+app.get("/Evangadi", (request, response) => response.status(200).send("hello Natsa"));
+      
+app.post("/payments/create", async (request, response) => {
+  const total = request.query.total;
+
+  console.log("Payment Request REcieved for this amount >>> ", total);
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: total,
+    currency: "usd",
+  });
+
+  response.status(201).send({
+    clientSecret: paymentIntent.client_secret,
+  });
+});
+exports.api = functions.https.onRequest(app);
+
+
+
+
+
+bootstrap
+npm i Carousel
+
+to upgrade(anything)
+firebase deploy --only hosting(front-end)
+
+steps
+1--firebase deploy --only functions
+
+2--firebase (upgrade(blaze))
+
+3--you got the link put it in the axios
+
+4--npm run build
+
+5--firebase deploy --only hosting(front-end)
+
+
+
+
+
+
+
+
+
